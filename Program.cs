@@ -45,6 +45,7 @@ namespace GuessTheNumber
 
         static int UserInputGuess()
         {
+            Console.WriteLine();
             Console.Write("Enter your guess: ");
             string userInput = Console.ReadLine();
             int guess = Convert.ToInt32(userInput);
