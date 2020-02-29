@@ -7,10 +7,11 @@ namespace GuessTheNumber
         //Target number to guess in the game.
         static int NumberToGuess = 0;
 
-        static void GenerateNumberToGuess(int topLimit) {
+        static void GenerateNumberToGuess(int topLimit)
+        {
             Random r = new Random();
-            //Number between 0 and the stablished top limit, must be an integer.
-            
+            //Random number between 0 and the stablished top limit, must be an integer.
+
             NumberToGuess = r.Next(topLimit) + 1;
             Console.WriteLine("Secret Target Number is: " + NumberToGuess);
         }
@@ -19,7 +20,7 @@ namespace GuessTheNumber
         {
             bool isRangeDefined = false;
 
-            while (!isRangeDefined) 
+            while (!isRangeDefined)
             {
                 Console.WriteLine("Hello, welcome to Guess The Number game!");
                 Console.WriteLine("Please input a positive number as the maximum.");
@@ -41,9 +42,41 @@ namespace GuessTheNumber
                 }
             }
         }
+
+        static int UserInputGuess()
+        {
+            Console.Write("Enter your guess: ");
+            string userInput = Console.ReadLine();
+            int guess = Convert.ToInt32(userInput);
+            return guess;
+        }
         static void Main(string[] args)
         {
+
+            int userGuess = 0;
+            int totalGuesses = 0;
+
             InputRangeSize();
+
+            while (userGuess != NumberToGuess)
+            {
+                userGuess = UserInputGuess();
+                totalGuesses++;
+                if (userGuess < NumberToGuess)
+                {
+                    Console.WriteLine(userGuess + " number is to low! Try again.");
+                }
+                else if (userGuess > NumberToGuess)
+                {
+                    Console.WriteLine(userGuess + " is to high! Try again.");
+                }
+                else
+                {
+                    Console.WriteLine(userGuess + " is correct! Congrats~");
+                    Console.WriteLine("Total number of guesses: " + totalGuesses);
+                }
+            }
+
         }
     }
 }
