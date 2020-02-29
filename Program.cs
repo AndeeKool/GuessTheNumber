@@ -7,6 +7,11 @@ namespace GuessTheNumber
         //Target number to guess in the game.
         static int NumberToGuess = 0;
 
+
+        /// <summary>
+        /// Generates the random number player must guess, between 0 and the top limit number given by the player at the beginning of the game.
+        /// </summary>
+        /// <param name="topLimit"></param>
         static void GenerateNumberToGuess(int topLimit)
         {
             Random r = new Random();
@@ -16,13 +21,15 @@ namespace GuessTheNumber
             //Console.WriteLine("Secret Target Number is: " + NumberToGuess); //print random number for debugging purpposes.
         }
 
+        /// <summary>
+        /// When game starts, let player choose the maximum number in the guessing range. It must be a positive integer.
+        /// </summary>
         static void InputRangeSize()
         {
             bool isRangeDefined = false;
 
             while (!isRangeDefined)
             {
-                Console.WriteLine("Hello, welcome to Guess The Number game!");
                 Console.WriteLine("Please input a positive number as the maximum.");
                 string userNumberInput = Console.ReadLine();
 
@@ -33,7 +40,6 @@ namespace GuessTheNumber
                 {
                     isRangeDefined = true;
                     Console.WriteLine("Maximum number is set to: " + rangeSize);
-                    Console.WriteLine();
                     GenerateNumberToGuess(rangeSize);
                 }
                 else
@@ -42,7 +48,11 @@ namespace GuessTheNumber
                 }
             }
         }
-
+        
+        /// <summary>
+        /// method that asks for players guess and converts it to an integer
+        /// </summary>
+        /// <returns>integer number</returns>
         static int UserInputGuess()
         {
             Console.WriteLine();
@@ -57,6 +67,7 @@ namespace GuessTheNumber
             int userGuess = 0;
             int totalGuesses = 0;
 
+            Console.WriteLine("Hello, welcome to Guess The Number game!");
             InputRangeSize();
 
             while (userGuess != NumberToGuess)
