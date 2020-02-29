@@ -13,7 +13,7 @@ namespace GuessTheNumber
             //Random number between 0 and the stablished top limit, must be an integer.
 
             NumberToGuess = r.Next(topLimit) + 1;
-            Console.WriteLine("Secret Target Number is: " + NumberToGuess);
+            //Console.WriteLine("Secret Target Number is: " + NumberToGuess); //print random number for debugging purpposes.
         }
 
         static void InputRangeSize()
