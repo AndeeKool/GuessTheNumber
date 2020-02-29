@@ -4,7 +4,16 @@ namespace GuessTheNumber
 {
     class Program
     {
-        static int RangeSize = 0;
+        //Target number to guess in the game.
+        static int NumberToGuess = 0;
+
+        static void GenerateNumberToGuess(int topLimit) {
+            Random r = new Random();
+            //Number between 0 and the stablished top limit, must be an integer.
+            
+            NumberToGuess = r.Next(topLimit) + 1;
+            Console.WriteLine("Secret Target Number is: " + NumberToGuess);
+        }
 
         static void InputRangeSize()
         {
@@ -16,19 +25,19 @@ namespace GuessTheNumber
                 Console.WriteLine("Please input a positive number as the maximum.");
                 string userNumberInput = Console.ReadLine();
 
-                RangeSize = Convert.ToInt32(userNumberInput);
+                int rangeSize = Convert.ToInt32(userNumberInput);
 
                 //Check if input is positive and is greater than 0
-                if (RangeSize > 0)
+                if (rangeSize > 0)
                 {
                     isRangeDefined = true;
-                    Console.WriteLine("Maximum number is set to: " + RangeSize);
+                    Console.WriteLine("Maximum number is set to: " + rangeSize);
                     Console.WriteLine();
-                    //GenerateNumberToGuess();
+                    GenerateNumberToGuess(rangeSize);
                 }
                 else
                 {
-                    Console.WriteLine("Invalid input! Please try again");
+                    Console.WriteLine("Invalid input! Please try again.");
                 }
             }
         }
