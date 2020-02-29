@@ -22,6 +22,9 @@ namespace GuessTheNumber
                 if (RangeSize > 0)
                 {
                     isRangeDefined = true;
+                    Console.WriteLine("Maximum number is set to: " + RangeSize);
+                    Console.WriteLine();
+                    //GenerateNumberToGuess();
                 }
                 else
                 {
@@ -32,7 +35,6 @@ namespace GuessTheNumber
         static void Main(string[] args)
         {
             InputRangeSize();
-            Console.WriteLine("Maximum Number is: " + RangeSize);
         }
     }
 }
